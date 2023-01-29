@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+<script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
+</head>
+
+<body >
+    <div id="ss">
+    <py-script>
+    def spell_out_numbers(number):
+        number_str = str(number)
+        if len(number_str) > 4:
+            return "Number is too long, max 4 digits allowed."
+        number_words = {1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five', 6: 'Six', 7: 'Seven', 8: 'Eight', 9: 'Nine', 10: 'Ten', 11: 'Eleven', 12: 'Twelve', 13: 'Thirteen', 14: 'Fourteen', 15: 'Fifteen', 16: 'Sixteen', 17: 'Seventeen', 18: 'Eighteen', 19: 'Nineteen', 20: 'Twenty', 30: 'Thirty', 40: 'Forty', 50: 'Fifty', 60: 'Sixty', 70: 'Seventy', 80: 'Eighty', 90: 'Ninety'}
+        if number < 21:
+            return number_words[number]
+        elif number < 100:
+            tens = number // 10
+            ones = number % 10
+            return number_words[tens * 10] + '-' + number_words[ones]
+        elif number < 1000:
+            hundreds = number // 100
+            remainder = number % 100
+            return number_words[hundreds] + ' Hundred ' + spell_out_numbers(remainder)
+        elif number < 10000:
+            thousands = number // 1000
+            remainder = number % 1000
+            return number_words[thousands] + ' Thousand ' + spell_out_numbers(remainder)
+    number=int(input())
+    print(spell_out_numbers(number))
+    </py-script>
+</div>
+    
+</body>
+</html>
